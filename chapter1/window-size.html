@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Size</title>
+    <style>
+        .tag {
+            display: inline-block;
+            background-color: thistle;
+            padding: 16px;
+            margin-top: 16px;
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tag">Window Size</div>
+
+    <script>
+        // script가 실행이 되면 querySelector를 이용해서 찾은 DOM 요소 중에 Class가 tag인 것이 tag 변수에 할당됨. 
+        // 여기서 tag는 div 요소를 가리킴.
+        const tag = document.querySelector('.tag');
+
+        function updateTag() {
+            tag.innerHTML = `
+            window.screen: ${window.screen.width}, ${window.screen.height} <br/>
+            window.outer: ${window.outerWidth}, ${window.outerHeight} <br/>
+            window.inner: ${window.innerWidth}, ${window.innerHeight} <br/>
+            documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}
+            `;
+        }
+
+        // window에 이벤트 리스너를 등록해서 사이즈가 변경될 때마다 등록한 함수를 호출해 달라고 요청
+        window.addEventListener('resi₩ze', () => {
+            updateTag();
+        });
+
+        updateTag();
+    </script>
+</body>
+</html>
